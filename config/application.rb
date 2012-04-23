@@ -62,6 +62,6 @@ module TillDawn
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    app.precompile_assets = true
+    config.assets.precompile = true
   end
 end
