@@ -187,6 +187,7 @@ DEPENDENCIES
   jquery-rails
   json
   less
+  less-rails
   mongoid (>= 2.0.0.beta.19)
   rails (= 3.2.3)
   rails_admin!
