@@ -1,66 +1,28 @@
 !!! 5
 %html(lang="en")
-	%head
-		%title= content_for?(:title) ? yield(:title) : "TillDawn"
-		%meta(charset="utf-8")
-		%meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-		%meta(name="apple-mobile-web-app-capable" content="yes")
-		-#%meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')= csrf_meta_tags
-		/ Le HTML5 shim, for IE6-8 support of HTML elements
-		/[if lt IE 9]
-			= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
-		= stylesheet_link_tag "application", :media => "all"
-		
-		-#apple icons
-		%link{:rel => "shortcut icon", :href => "favicon.ico"} 
-		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 163dpi)", :href => "apple-touch-icon.png"}
-		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 132dpi)", :sizes => "72x72", :href => "apple-touch-icon-72x72-precomposed.png"}
-		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 326dpi)", :sizes => "114x114", :href => "apple-touch-icon-114x114-precomposed.png"}
-		%link{:rel => "apple-touch-startup-image", :href => "app-startup-320x460.png", :media => "screen and (max-device-width: 320px)"}
-
-		%body
-			.navbar.navbar-fixed-top
-				.navbar-inner
-					.container
-						%a.brand(href="#") TillDawn
-						%ul.nav
-							%li.nearby-playlists.active
-								%a.page_link#parties_link(href="#parties_wrapper") Nearby Parties 
-							%li.nearby-playlists
-								%a.page_link#parties_link(href="#parties_wrapper") Nearby Parties 
-							%li.new-playlist
-								%a.page_link#search_tracks_link(href="#search_wrapper") Search Songs
-						%a.login
-							= image_tag( 'dummy/users/1.jpg', :class => 'user-thumb')
-			
-			.page#main_stream
-				%ul.account-stream.first-element
-					%li.num 3 Total Events
-					%li.event
-						%a(href="#")
-							%section.account-event-info
-								%i.map-marker
-								%h4.event-name Phoenix Lounge
-								%p.check-in 
-									%i.icon-ok
-									April 8<br />11:37pm
-								%p.location 72 Mt. Auburn, Cambridge, MA
-								%aside
-									%strong 14
-									%br 
-									%i Photos
-								%hr
-							.account-event-images
-								= image_tag( 'dummy/events/1.jpg')
-								= image_tag( 'dummy/events/2.jpg')
-								= image_tag( 'dummy/events/3.jpg')
-								= image_tag( 'dummy/events/4.jpg')
-								= image_tag( 'dummy/events/5.jpg')
-							%hr
-							%p.is-current-playlist Yes
-		
-		
-			
-		-# Placed at the end of the document so the pages load faster
-		= javascript_include_tag "application"
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "YentaFriend"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="favicon.ico" rel="shortcut icon")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
+  %body
+    .container
+      .content
+        = yield
+    
+      %footer
+        %p.pull-right &copy; Yenta-Friend 2012
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "application"
 
