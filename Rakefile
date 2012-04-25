@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-TillDawn::Application.load_tasks
+YentaFriendTemp::Application.load_tasks
