@@ -3,15 +3,15 @@ defaults: &defaults
   
 development:
   <<: *defaults
-  uri: mongodb://admin:tilldawn@flame.mongohq.com:27040/tilldawn-development
+  uri: mongodb://root:password@flame.mongohq.com:27108/yenta-temp
 
 test:
   host: localhost
-  database: till_dawn_test
+  database: yenta-temp
 
 # set these environment variables on your prod server
 production:
-  uri: <%=ENV['MONGOHQ_URL'] %>
+  uri: mongodb://root:password@flame.mongohq.com:27108/yenta-temp
   # slaves:
   #   - host: slave1.local
   #     port: 27018

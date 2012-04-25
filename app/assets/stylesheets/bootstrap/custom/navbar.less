@@ -220,21 +220,52 @@
 }
 
 // Custom Nav Items
-.navbar .nav .nearby-playlists {
-	background:  image-url("icons/icons-white/07-map-marker.png") no-repeat center center;
+.navbar .nav .private-stream {
 	height: 43px;
 	width: 65px;
 	text-indent: -9999em;
-	a {min-height:20px;}
+	a {
+		min-height:20px;
+		background: image-url("icons/icons-white/05-shuffle-up.png") no-repeat center center;
+		opacity: 0.5;
+	}
 	
 	.active > a {border-top: 3px solid @mainBlue;}
 	
+}
+
+.navbar .nav .public-stream {
+	height: 43px;
+	width: 65px;
+	text-indent: -9999em;
+	a {
+		min-height:20px;
+		background: image-url("icons/icons-white/112-group.png") no-repeat center center;
+		opacity: 0.5;
+	}
+	
+	.active > a {border-top: 3px solid @mainBlue;}
+	
+}
+
+.navbar .nav .event-stream {
+	height: 43px;
+	width: 65px;
+	text-indent: -9999em;
+	a {
+		min-height:20px;
+		background: image-url("icons/icons-white/42-photos.png") no-repeat center center;
+		opacity: 0.5;
+	}
+	
+	.active > a {border-top: 3px solid @mainBlue;}
 }
 
 .navbar .nav .current-playlist {
 	background: image-url("icons/icons-white/221-recordplayer.png") no-repeat center center;
 	height: 43px;
 	width: 65px;
+	opacity: 0.5;
 	a {min-height:20px;}
 	
 	.dropdown-menu {
@@ -245,35 +276,27 @@
 	}
 }
 
-.navbar .nav .new-playlist {
-	background: image-url("icons/icons-white/301-note-3.png") no-repeat center center;
-	height: 43px;
-	width: 65px;
-	text-indent: -9999em;
-	a {min-height:20px;}
-}
-
 // Hover
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:active {
 	color: @navbarLinkColorHover;
 	text-decoration: none;
-	background-color: @navbarBackground;
-	background-color: rgba(0,0,0,.6);
-	border-left: 1px solid black;
 }
 
 // Active nav items
 
 //set opacity to 1 when active to highlight icon
 .navbar .nav .active {
-	opacity: 1;
+	background-color: @navbarBackground;
+	background-color: rgba(0,0,0,.6);
 }
 
 .navbar .nav .active > a {
 	color: @navbarLinkColorHover;
 	text-decoration: none;
+	opacity: 1;
 	border-top: 3px solid @mainBlue;
+	border-left: 1px solid black;
 }
 
 // Dividers (basically a vertical hr)
