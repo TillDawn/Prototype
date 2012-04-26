@@ -38,7 +38,12 @@ class User
     document.create_fb_friend_list(:data => get_fb_friend_list)
   end
   
-  def get_fb_friend_list  JSON.parse(Typhoeus::Request.get("https://graph.facebook.com/#{fb_uid}/friends?access_token=#{fb_token}").body)["data"]
+  def get_fb_friend_list
+    JSON.parse(
+      Typhoeus::Request.get(
+        "https://graph.facebook.com/#{fb_uid}/friends?access_token=#{fb_token}"
+      ).body
+    )["data"]
   end
   
   # def get_linked_profiles
@@ -79,7 +84,7 @@ class User
         end
       end
     end
-    
+
   end
   
 end
