@@ -30,3 +30,11 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'pusher'
 gem 'fb_graph'
 gem 'mongoid_spacial'
+gem "omniauth-facebook"
+gem "awesome_print"
+gem 'typhoeus'
+gem 'coffee-filter'
+gem 'geocoder'
+gem "mongoid-paperclip", :require => "mongoid_paperclip"
+gem "aws-s3",            :require => "aws/s3"
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'

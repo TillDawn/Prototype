@@ -4,7 +4,7 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "please-change-me-at-config-initializers-devise@example.com"
+  config.mailer_sender = "mailer@tilldawn.fm"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
@@ -17,6 +17,15 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/mongoid'
+  require "omniauth-facebook"
+  
+  if Rails.env.development?
+    # dev configuration
+    config.omniauth :facebook, "300295126713931", "ee0bc07c6c82d8bf2774dc170a0ded73"
+  else
+    # dep configuration
+    config.omniauth :facebook, "367242596644520", "9854a82bb0f535e1af8383c950016cf8"
+  end
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -85,7 +94,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "8bb65653c90cd9139fcbc09d9b653e4eb142802d942f700cc4c0c25a96336f96a3add3fb6cfe412ceb7cdfbdd911563dd1b8e4b158cbcdc46a70f788afc03a75"
+  # config.pepper = "5a6b11340620019087cc1757cac99937307cd089502106f47840ea2950306b465b312d9c59b406bf6aecd57b347981d8c7226494c79ff343f09536239d101bf2"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -182,7 +191,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
