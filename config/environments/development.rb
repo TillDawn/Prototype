@@ -1,5 +1,5 @@
 
-TillDawn::Application.configure do
+TillDawn::Application.configure do  
   Pusher.app_id = '19252'
   Pusher.key = 'e2ebb4559409a0955e3a'
   Pusher.secret = '909159da49f2f17c348d'
