@@ -34,50 +34,50 @@
 						%a.login
 							= image_tag( 'dummy/users/1.jpg', :class => 'user-thumb')
 			
-			.page#event_stream
-				%ul.account-stream.first-element
-					%li.num 2 events
-					%li.num 2 Total Events
-					%li.event{:style => "margin-bottom: 20px;"}
-						%a(href="#")
-							%section.account-event-info
-								%i.map-marker
-								%h4.event-name Tommy Doyle's
-								%p.check-in 
-									%i.icon-ok
-									April 17<br />11:14pm
-								%p.location Cambridge, MA
-								%aside
-									%strong 7
-									%br 
-									%i Photos
-								%hr
-							.account-event-images
-								= image_tag( 'dummy/events/6b.jpg')
-								= image_tag( 'dummy/events/7.jpg')
-								= image_tag( 'dummy/events/8.jpg')
-								= image_tag( 'dummy/events/9.jpg')
-								= image_tag( 'dummy/events/10.jpg')
-					%li.event
-						%a(href="#")
-							%section.account-event-info
-								%i.map-marker
-								%h4.event-name Phoenix Night Club
-								%p.check-in 
-									%i.icon-ok
-									April 8<br />11:37pm
-								%p.location New York, NY
-								%aside
-									%strong 21
-									%br 
-									%i Photos
-								%hr
-							.account-event-images
-								= image_tag( 'dummy/events/1.jpg')
-								= image_tag( 'dummy/events/2.jpg')
-								= image_tag( 'dummy/events/3.jpg')
-								= image_tag( 'dummy/events/4.jpg')
-								= image_tag( 'dummy/events/5.jpg')
+			#scroll-content
+				.page#event_stream
+					%ul.account-stream.first-element
+						%li.num 2 Total Events
+						%li.event{:style => "margin-bottom: 20px;"}
+							%a(href="#")
+								%section.account-event-info
+									%i.map-marker
+									%h4.event-name Tommy Doyle's
+									%p.check-in 
+										%i.icon-ok
+										April 17<br />11:14pm
+									%p.location Cambridge, MA
+									%aside
+										%strong 7
+										%br 
+										%i Photos
+									%hr
+								.account-event-images
+									= image_tag( 'dummy/events/6b.jpg')
+									= image_tag( 'dummy/events/7.jpg')
+									= image_tag( 'dummy/events/8.jpg')
+									= image_tag( 'dummy/events/9.jpg')
+									= image_tag( 'dummy/events/10.jpg')
+						%li.event
+							%a(href="#")
+								%section.account-event-info
+									%i.map-marker
+									%h4.event-name Phoenix Night Club
+									%p.check-in 
+										%i.icon-ok
+										April 8<br />11:37pm
+									%p.location New York, NY
+									%aside
+										%strong 21
+										%br 
+										%i Photos
+									%hr
+								.account-event-images
+									= image_tag( 'dummy/events/1.jpg')
+									= image_tag( 'dummy/events/2.jpg')
+									= image_tag( 'dummy/events/3.jpg')
+									= image_tag( 'dummy/events/4.jpg')
+									= image_tag( 'dummy/events/5.jpg')
 							
 			.postbar.postbar-fixed-bottom
 				.postbar-inner
