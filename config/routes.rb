@@ -10,11 +10,11 @@ TillDawn::Application.routes.draw do
     match 'friend_stream'
   end
   
-  resources :posts
-  # scope :controller => :posts do
-  #   match 'create'
-  #   
-  # end
+  scope :controller => :posts do
+    match 'new_post', :defaults => {:_type => "TextPost"}
+  end
+  
+  post 'pusher/auth'
   
   root :to => 'main#login'
   

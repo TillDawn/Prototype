@@ -8,7 +8,8 @@ class User
   has_and_belongs_to_many :inbound_connections, :class_name => 'User', :inverse_of => :connections
 
   has_one :location_history
-  has_many :streams
+  has_one :fb_friend_list
+  has_many :streams, :dependent => :destroy
   embeds_one :location, :as => :locatable
   
   
@@ -43,6 +44,10 @@ class User
   
   validates_presence_of :email
   validates_uniqueness_of :email, :fb_uid
+  
+  def image_url(size = "square")
+    "https://graph.facebook.com/#{fb_uid}/picture?type=#{size}"
+  end
   
   set_callback(:create, :after) do |document|
     document.create_fb_friend_list(:data => get_fb_friend_list)

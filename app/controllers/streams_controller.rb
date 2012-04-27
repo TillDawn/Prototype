@@ -1,6 +1,4 @@
-class StreamsController < ApplicationController
-  
-  
+class StreamsController < ApplicationController  
 
   
   def user_stream

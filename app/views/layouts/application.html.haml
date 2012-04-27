@@ -17,7 +17,33 @@
 		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 132dpi)", :sizes => "72x72", :href => "apple-touch-icon-72x72-precomposed.png"}
 		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 326dpi)", :sizes => "114x114", :href => "apple-touch-icon-114x114-precomposed.png"}
 		%link{:rel => "apple-touch-startup-image", :href => "app-startup-320x460.png", :media => "screen and (max-device-width: 320px)"}
+		= javascript_include_tag "application"		
+		:javascript
+			$(function() {
+				var pusher = new Pusher('e2ebb4559409a0955e3a');
+				var channel = pusher.subscribe("private-#{current_user._id}");
 
+				// Some useful debug msgs
+				pusher.connection.bind('connecting', function() {
+				$('div#status').text('Connecting to Pusher...');
+				});
+				pusher.connection.bind('connected', function() {
+				$('div#status').text('Connected to Pusher!');
+				});
+				pusher.connection.bind('failed', function() {
+				$('div#status').text('Connection to Pusher failed :(');
+				});
+				channel.bind('subscription_error', function(status) {
+				$('div#status').text('Pusher subscription_error');
+				});
+				channel.bind('post',function(data){
+					dom_update('#list', data.html);
+				});
+				function dom_update(target, html){
+				$(target).append(html);
+				}
+			});
+		%script{:src => "http://js.pusherapp.com/1.9/pusher.min.js"}
 		%body
 			#main_navigation.navbar.navbar-fixed-top
 				.navbar-inner
@@ -32,6 +58,6 @@
 								%a.page_link#event_stream_link(href="#event_stream") Event Stream
 							%a.login
 								= current_user.first_name
-								= image_tag( current_user.image_url, :class => 'user-thumb')
+								= image_tag( current_user.icon_url, :class => 'user-thumb')
+							#status
 			= yield						
-		= javascript_include_tag "application"
