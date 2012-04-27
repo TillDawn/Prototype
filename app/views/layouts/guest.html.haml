@@ -12,7 +12,6 @@
 			= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
 		= stylesheet_link_tag "application", :media => "all"
 		
-		-#apple icons
 		%link{:rel => "shortcut icon", :href => "favicon.ico"} 
 		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 163dpi)", :href => "apple-touch-icon.png"}
 		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 132dpi)", :sizes => "72x72", :href => "apple-touch-icon-72x72-precomposed.png"}
@@ -40,8 +39,5 @@
 								%button.btn.btn-info{:type => "button"}
 									%strong Share
 									%i.icon-share-alt.icon-white
-		
-			
-		-# Placed at the end of the document so the pages load faster
-		= javascript_include_tag "application"
+			= javascript_include_tag "application"
 
