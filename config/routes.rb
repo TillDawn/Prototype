@@ -3,6 +3,7 @@ TillDawn::Application.routes.draw do
   
   scope :controller => :main do
     match 'login'
+    match 'update_user_location'
   end
   
   scope :controller => :streams do

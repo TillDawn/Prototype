@@ -10,7 +10,7 @@ class User
   has_one :location_history
   has_one :fb_friend_list
   has_many :streams, :dependent => :destroy
-  embeds_one :location, :as => :locatable
+  embeds_one :current_location, :class_name => "Location", :as => :locatable
   
   
 

@@ -4,5 +4,8 @@ class MainController < ApplicationController
     redirect_to user_stream_path if user_signed_in?
   end
   
+  def update_user_location
+    puts params
+  end
 
 end
