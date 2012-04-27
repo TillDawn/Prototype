@@ -1,6 +1,6 @@
 class Location
   include Mongoid::Document
-  include Mongoid::Timestamp
+  include Mongoid::Timestamps
   include Mongoid::Versioning
   include Geocoder::Model::Mongoid
   
