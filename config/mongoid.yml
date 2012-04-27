@@ -3,17 +3,11 @@ defaults: &defaults
   
 development:
   <<: *defaults
-  uri: mongodb://root:password@flame.mongohq.com:27108/yenta-temp
+  uri: mongodb://root:tilldawn@flame.mongohq.com:27108/tildawn-demo
 
 test:
   host: localhost
-  database: yenta-temp
+  database: tilldawn-temp
 
-# set these environment variables on your prod server
 production:
-  uri: mongodb://root:password@flame.mongohq.com:27108/yenta-temp
-  # slaves:
-  #   - host: slave1.local
-  #     port: 27018
-  #   - host: slave2.local
-  #     port: 27019
+  uri: mongodb://root:tilldawn@flame.mongohq.com:27108/tildawn-demo

@@ -3,14 +3,18 @@ class User
   include Mongoid::Timestamps
   
   devise :omniauthable
-
+  
   has_and_belongs_to_many :connections, :class_name => 'User', :inverse_of => :inbound_connections
   has_and_belongs_to_many :inbound_connections, :class_name => 'User', :inverse_of => :connections
 
   has_one :location_history
   has_one :fb_friend_list
   has_many :streams, :dependent => :destroy
-  embeds_one :current_location, :class_name => "Location", :as => :locatable
+  
+  
+  field :coordinates, :type => Array
+  index [[:coordinates, Mongo::GEO2D]]
+  
   
   
 
@@ -51,6 +55,7 @@ class User
   
   set_callback(:create, :after) do |document|
     document.create_fb_friend_list(:data => get_fb_friend_list)
+    document.create_location_history
     document.update_attributes(:connections => get_td_connections)
     document.connections.each do |connection|
       connection.connections << self

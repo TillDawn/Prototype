@@ -12,8 +12,8 @@ TillDawn::Application.routes.draw do
   end
   
   scope :controller => :posts do
-    match 'new_post', :defaults => {:_type => "TextPost"}
-    match 'share_post/:id' => :share_post
+    match 'user_post', :defaults => {:_type => "TextPost"}
+    match 'friend_post', :defaults => {:_type => "TextPost"}
   end
   
   post 'pusher/auth'

@@ -1,4 +1,6 @@
 class TextPost < Post
-  field :body, :default => ""
+  field :body
+  
+  validates_presence_of :body
 
 end

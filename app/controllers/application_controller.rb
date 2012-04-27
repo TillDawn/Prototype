@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_stream, :current_friend_stream
   
   def current_user_name
-    @current_user_name ||= current_user.name
+    @current_user_name ||= "#{current_user.first_name} #{current_user.last_name.first}."
   end
   
   def current_user_icon_url

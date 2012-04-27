@@ -14,5 +14,5 @@ class ImagePost < Post
         :large    => ['500x500>',   :jpg]
       },
       :convert_options => { :all => '-background black -flatten +matte' }
-  
+  validates_presence_of :image
 end

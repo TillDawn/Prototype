@@ -5,21 +5,22 @@
 	currentLocation = JSON.parse(localStorage["userLocation"])
 	navigator.geolocation.getCurrentPosition (location) ->
 		coords = location.coords
-		latLong = [coords.latitude, coords.longitude]
+		lngLat = [coords.longitude, coords.latitude]
 		userLocation = 
-			latLong : latLong
+			lngLat : lngLat
 			updatedAt : (new Date).getTime()
-		if( (new Date).getTime() - Number(currentLocation["updatedAt"]) > 300000 || (currentLocation["latLong"] != latLong))
-			$.post '/main/update_location', 
-				latLong : latLong
+		if( (new Date).getTime() - Number(currentLocation["updatedAt"]) > 300000 || (currentLocation["lngLat"] != lngLat))
+			$.post '/update_location', 
+				coordinates : lngLat
 		localStorage["userLocation"] = JSON.stringify userLocation
 	
 @initializeGeo = ()->
 	navigator.geolocation.getCurrentPosition (location) ->
 		coords = location.coords
-		latLong = [coords.latitude, coords.longitude]
+		lngLat = [coords.longitude, coords.latitude]
 		userLocation = 
-			latLong : latLong
+			lngLat : lngLat
 			updatedAt : (new Date).getTime()
 		localStorage["userLocation"] = JSON.stringify userLocation
-		# $.post '/main/update_user_location', userLocation
+		$.post '/update_location', 
+				coordinates : lngLat
