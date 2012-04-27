@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     @current_user_icon_url ||= current_user.icon_url
   end
   
+  def current_stream(stream_type = nil)
+    current_user.stream(stream_type)
+  end
+  
   def current_user_stream
     @current_user_stream ||= current_user.user_stream
   end

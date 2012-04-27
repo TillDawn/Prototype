@@ -51,6 +51,15 @@ class User
   
   set_callback(:create, :after) do |document|
     document.create_fb_friend_list(:data => get_fb_friend_list)
+    document.update_attributes(:connections => get_td_connections)
+    document.connections.each do |connection|
+      connection.connections << self
+      connection.save
+    end
+  end
+  
+  def get_td_connections
+    User.where(:fb_uid.in => fb_friend_list.data.collect{|i| i["id"]})
   end
   
   def get_fb_friend_list
@@ -61,16 +70,12 @@ class User
     )["data"]
   end
   
-  # def get_linked_profiles
-  #   if fb_friend_list.nil?
-  #     []
-  #   else
-  #     Profile.where(:fb_uid.in => fb_friend_list.data.collect{|i| i["id"]})
-  #   end
-  # end
-
   def fb_user
     FbGraph::User.me(fb_token)
+  end
+  
+  def stream(stream_type = "UserStream")
+    streams.where(:stream_type => stream_type).first
   end
   
   def user_stream
