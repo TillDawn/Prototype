@@ -1,6 +1,5 @@
 class StreamsController < ApplicationController  
 
-  
   def user_stream
     
   end

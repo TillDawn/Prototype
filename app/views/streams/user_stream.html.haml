@@ -6,7 +6,7 @@
 	.postbar.postbar-fixed-bottom
 		.postbar-inner
 			.container
-				= form_for :post, :url => new_post_path, :class => 'form-horizontal', :remote => true, :style => 'margin-top:7px' do |f|
+				= form_for :post, :url => user_post_path, :class => 'form-horizontal', :id => "text_post_form", :remote => true, :style => 'margin-top:7px' do |f|
 					.input-append(style="margin-top:7px")
 						= f.text_field :body, {:size => "16", :type => "text", :style => 'width:145px'}
 						= f.submit "Post", :onclick => '$("form input[type=\"text\"]").val("");', :style => 'margin-left:-5px; margin-top:-8px; color: #ffffff;', :class => 'btn btn-hot'
