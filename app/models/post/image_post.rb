@@ -5,7 +5,7 @@ class ImagePost < Post
     :path           => ':attachment/:id/:style.:extension',
       :storage        => :s3,
       :url            => ':s3_alias_url',
-      :bucket         => 'tilldawn-demo'
+      :bucket         => 'tilldawn-demo',
       :s3_credentials => File.join(Rails.root, 'config', 's3.yml'),
       :styles => {
         :original => ['1920x1680>', :jpg],
