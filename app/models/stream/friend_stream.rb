@@ -1,0 +1,5 @@
+class FriendStream < Stream
+  
+  
+  
+end

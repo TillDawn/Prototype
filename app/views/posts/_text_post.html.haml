@@ -1,0 +1,5 @@
+- post ||= @post
+%li[post]{:style => "margin-bottom: 20px;"}
+	%section.account-event-info
+		= image_tag post.poster_icon_url
+		= post.body

@@ -1,0 +1,18 @@
+#scroll-content
+.page#event_stream
+	%ul.account-stream.first-element
+		- for post in current_user_stream.posts do
+			= render :partial => "posts/#{post._type.underscore}", :locals => {:post => post}
+.postbar.postbar-fixed-bottom
+	.postbar-inner
+		.container
+			= form_for :post, :url => posts_path, :class => 'form-horizontal', :remote => true, :style => 'margin-top:7px' do |f|
+				= f.hidden_field :_type, :value => "TextPost"
+				.input-append
+					= f.text_field :body, :html => {:size => "16", :type => "text", :style => 'width:155px'}
+					%button.btn.btn-hot{:type => "button"}
+						= f.submit do
+							%i.icon-comment.icon-white
+			%button.btn.btn-info{:type => "button"}
+				%strong Share
+				%i.icon-share-alt.icon-white

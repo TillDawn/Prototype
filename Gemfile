@@ -2,10 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
 gem 'json'
 
 group :assets do
@@ -13,8 +9,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-
 
 gem "devise"
 gem "haml", ">= 3.0.0"
@@ -38,3 +32,5 @@ gem 'geocoder'
 gem "mongoid-paperclip", :require => "mongoid_paperclip"
 gem "aws-s3",            :require => "aws/s3"
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'mongoid_taggable_with_context'
+gem 'mongoid-history'

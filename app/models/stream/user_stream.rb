@@ -1,0 +1,4 @@
+class UserStream < Stream
+  
+  
+end

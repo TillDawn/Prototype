@@ -1,0 +1,4 @@
+class EventStream < Stream
+  
+  
+end

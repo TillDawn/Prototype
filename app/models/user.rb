@@ -4,6 +4,15 @@ class User
   
   devise :omniauthable
 
+  has_and_belongs_to_many :connections, :class_name => 'User', :inverse_of => :inbound_connections
+  has_and_belongs_to_many :inbound_connections, :class_name => 'User', :inverse_of => :connections
+
+  has_one :location_history
+  has_many :streams
+  embeds_one :location, :as => :locatable
+  
+  
+
   ## Database authenticatable
   field :email,              :type => String, :null => false, :default => ""
   field :encrypted_password, :type => String, :null => false, :default => ""
@@ -22,11 +31,12 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
+  field :name
   field :first_name
   field :last_name
   field :fb_link 
   
-  field :image_url
+  field :icon_url
   field :fb_uid
   field :fb_token
   
@@ -58,6 +68,15 @@ class User
     FbGraph::User.me(fb_token)
   end
   
+  def user_stream
+    streams.find_or_create_by(:_type => "UserStream")
+  end
+  
+  def friend_stream
+    streams.find_or_create_by(:_type => "FriendStream")
+  end
+  
+  
   class << self
     
     def find_for_facebook_oauth(access_token, signed_in_resource=nil)
@@ -72,9 +91,10 @@ class User
       if user = User.where(:fb_uid => fb_uid).first
         user.update_attribute(:access_token, access_token.token)
       else # Create a user with a stub password. 
-        user = User.new(:email => data.email, :password => Devise.friendly_token[0,20], :first_name => data.first_name, :last_name => data.last_name,  :fb_uid => fb_uid, :image_url => info.image, :fb_token => fb_token)
+        user = User.new(:email => data.email, :password => Devise.friendly_token[0,20], :first_name => data.first_name, :last_name => data.last_name, :name => data.name, :fb_uid => fb_uid, :icon_url => info.image, :fb_token => fb_token)
         user.save!
       end
+      user
     end
     
     def new_with_session(params, session)

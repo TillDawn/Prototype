@@ -12,6 +12,7 @@
 			= javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
 		= stylesheet_link_tag "application", :media => "all"
 		
+		-#apple icons
 		%link{:rel => "shortcut icon", :href => "favicon.ico"} 
 		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 163dpi)", :href => "apple-touch-icon.png"}
 		%link{:rel => "apple-touch-icon-precomposed", :media => "screen and (resolution: 132dpi)", :sizes => "72x72", :href => "apple-touch-icon-72x72-precomposed.png"}
@@ -24,14 +25,23 @@
 					.container
 						%a.brand(href="#") TillDawn
 						%ul.nav
-							%li.private-stream.active
-								%a.page_link#private_stream_link(href="#private_stream") Private Stream
-							%li.public-stream
-								%a.page_link#public_stream_link(href="#public_stream") Public Stream 
-							%li.event-stream
-								%a.page_link#event_stream_link(href="#event_stream") Event Stream
-							%a.login
-								= current_user.first_name
-								= image_tag( current_user.image_url, :class => 'user-thumb')
-			= yield						
+
+			
+			#scroll-content
+				= yield
+			.postbar.postbar-fixed-bottom
+				.postbar-inner
+					.container
+						%form.form-horizontal{:style => 'margin-top:7px'}
+							.input-append
+								%input{:size => "16", :type => "text", :style => 'width:155px'}
+								%button.btn.btn-hot{:type => "button"}
+									%i.icon-comment.icon-white
+								%button.btn.btn-info{:type => "button"}
+									%strong Share
+									%i.icon-share-alt.icon-white
+		
+			
+		-# Placed at the end of the document so the pages load faster
 		= javascript_include_tag "application"
+
