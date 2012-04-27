@@ -1,17 +1,15 @@
 #scroll-content
-.page#event_stream
-	%ul.account-stream.first-element#list
-		- for post in current_user_stream.posts do
-			= render :partial => "posts/#{post._type.underscore}", :locals => {:post => post}
-.postbar.postbar-fixed-bottom
-	.postbar-inner
-		.container
-			= form_for :post, :url => new_post_path, :class => 'form-horizontal', :remote => true, :style => 'margin-top:7px' do |f|
-				.input-append
-					= f.text_field :body, :html => {:size => "16", :type => "text", :style => 'width:155px'}
-					%button.btn.btn-hot{:type => "button"}
-						= f.submit do
-							%i.icon-comment.icon-white
-			%button.btn.btn-info{:type => "button"}
-				%strong Share
-				%i.icon-share-alt.icon-white
+	.page#event_stream
+		%ul.account-stream.first-element#list
+			- for post in current_user_stream.posts do
+				= render :partial => "posts/#{post._type.underscore}", :locals => {:post => post}
+	.postbar.postbar-fixed-bottom
+		.postbar-inner
+			.container
+				= form_for :post, :url => new_post_path, :class => 'form-horizontal', :remote => true, :style => 'margin-top:7px' do |f|
+					.input-append(style="margin-top:7px")
+						= f.text_field :body, {:size => "16", :type => "text", :style => 'width:145px'}
+						= f.submit "Post", :onclick => '$("form input[type=\"text\"]").val("");', :style => 'margin-left:-5px; margin-top:-8px; color: #ffffff;', :class => 'btn btn-hot'
+						%button.btn.btn-info{:type => "button", :style => 'margin-left:-3px;margin-top:-8px'}
+							%strong Share
+							%i.icon-share-alt.icon-white
