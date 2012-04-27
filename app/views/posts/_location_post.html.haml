@@ -1,0 +1,9 @@
+- post ||= @post
+%li[post]{:style => "margin-bottom: 15px;"}
+	%section.account-event-info
+		= image_tag post.poste r_icon_url, :style => "width:35px;height:35px;vertical-align:top"
+		.temp(style="margin: -35px 0 0 40px;")
+			%p(style='float:right')= post.created_at
+			%p(style="font-size:14px;font-weight:bold;font-style:normal;margin:0;display:block")= post.poster_name
+			%p(style="font-size:14px;font-style:normal;margin: 0;")= post.body
+		

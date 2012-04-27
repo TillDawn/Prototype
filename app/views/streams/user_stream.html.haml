@@ -1,15 +1,35 @@
 #scroll-content
-	.page#event_stream
-		%ul.account-stream.first-element#list
+	.page#event_stream(style="margin-bottom:40px;")
+		/ #user_list.modal.hide
+		/ 	.modal-header
+		/ 		%button.close(data-dismiss="modal") x
+		/ 		%h3 User's Connected
+		/ 	.modal-body
+		/ 		%ul.acount-stream
+		/ 
+		/ 	.modal-footer
+		/ 		=link_to "#", :class=>"btn", "data-dismiss"=>"modal" do
+		/ 			Close
+		/ 			
+		/ .accordion#user_list
+		/ 	.accordion-group
+		/ 		.accordion-heading
+		/ 			=link_to "Current Connected Users",  '#collapseOne', :class => 'accordion-toggle', "data-toggle" => "collapse", "data-parent" => "#user_list" 
+		/ 		#collapseOne.accordion-body.collapse.in
+		/ 			.accordion-inner
+		/ 				Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+		
+		%ul.account-stream#list
+			%li.num#location Your location:
 			- for post in current_user_stream.posts do
 				= render :partial => "posts/#{post._type.underscore}", :locals => {:post => post}
-	.postbar.postbar-fixed-bottom
-		.postbar-inner
-			.container
-				= form_for :post, :url => new_post_path, :class => 'form-horizontal', :remote => true, :style => 'margin-top:7px' do |f|
-					.input-append(style="margin-top:7px")
-						= f.text_field :body, {:size => "16", :type => "text", :style => 'width:145px'}
-						= f.submit "Post", :onclick => '$("form input[type=\"text\"]").val("");', :style => 'margin-left:-5px; margin-top:-8px; color: #ffffff;', :class => 'btn btn-hot'
-						%button.btn.btn-info{:type => "button", :style => 'margin-left:-3px;margin-top:-8px'}
-							%strong Share
-							%i.icon-share-alt.icon-white
+.postbar.postbar-fixed-bottom
+	.postbar-inner
+		.container
+			= form_for :post, :url => new_post_path, :class => 'form-horizontal', :remote => true, :style => 'margin-top:7px' do |f|
+				.input-append(style="margin-top:7px")
+					= f.text_field :body, {:size => "16", :type => "text", :style => 'width:145px'}
+					= f.submit "Post", :style => 'margin-left:-5px; margin-top:-8px; color: #ffffff;', :class => 'btn btn-hot'
+					%button.btn.btn-info{:type => "button", :style => 'margin-left:-3px;margin-top:-8px'}
+						%strong Share
+						%i.icon-share-alt.icon-white
