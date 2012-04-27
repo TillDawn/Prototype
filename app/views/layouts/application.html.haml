@@ -22,7 +22,6 @@
 			$(function() {
 				var pusher = new Pusher('e2ebb4559409a0955e3a');
 				var channel = pusher.subscribe("private-#{current_user._id}");
-
 				// Some useful debug msgs
 				pusher.connection.bind('connecting', function() {
 				$('div#status').text('Connecting to Pusher...');
@@ -37,14 +36,14 @@
 				$('div#status').text('Pusher subscription_error');
 				});
 				channel.bind('post',function(data){
-					dom_update('#list', data.html);
+					dom_update("user_#{current_user._id} .account_stream", data.html);
 				});
 				function dom_update(target, html){
-				$(target).append(html);
+				$(target).prepend(html);
 				}
 			});
 		%script{:src => "http://js.pusherapp.com/1.9/pusher.min.js"}
-		%body
+		%body[current_user]
 			#main_navigation.navbar.navbar-fixed-top
 				.navbar-inner
 					.container

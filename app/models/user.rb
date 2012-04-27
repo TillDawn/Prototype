@@ -51,6 +51,7 @@ class User
   
   set_callback(:create, :after) do |document|
     document.create_fb_friend_list(:data => get_fb_friend_list)
+    document.create_location_history
     document.update_attributes(:connections => get_td_connections)
     document.connections.each do |connection|
       connection.connections << self

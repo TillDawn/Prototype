@@ -10,8 +10,8 @@
 			latLong : latLong
 			updatedAt : (new Date).getTime()
 		if( (new Date).getTime() - Number(currentLocation["updatedAt"]) > 300000 || (currentLocation["latLong"] != latLong))
-			$.post '/main/update_location', 
-				latLong : latLong
+			$.post '/update_location', 
+				coordinates : latLong
 		localStorage["userLocation"] = JSON.stringify userLocation
 	
 @initializeGeo = ()->
@@ -22,4 +22,5 @@
 			latLong : latLong
 			updatedAt : (new Date).getTime()
 		localStorage["userLocation"] = JSON.stringify userLocation
-		# $.post '/main/update_user_location', userLocation
+		$.post '/update_location', 
+				coordinates : latLong

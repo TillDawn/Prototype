@@ -5,7 +5,9 @@ class MainController < ApplicationController
   end
   
   def update_location
-    puts params
+    @location = current_user.update_attributes(:current_location => params[:coordinates])
+    current_user.location_history.locations.create(@location.attributes)
+    render {:status => 200}
   end
 
 end
