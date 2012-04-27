@@ -1,7 +1,6 @@
 class Location
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Versioning
   include Geocoder::Model::Mongoid
   
   reverse_geocoded_by :coordinates              # can also be an IP address

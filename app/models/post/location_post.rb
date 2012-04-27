@@ -1,9 +1,10 @@
-class LocationPost
+class LocationPost < Post
   include Geocoder::Model::Mongoid
+  
   field :address
   field :coordinates, :type => Array
   
-  geocoded_by :address               # can also be an IP address
+  geocoded_by :address
   after_validation :geocode  
   
 end
